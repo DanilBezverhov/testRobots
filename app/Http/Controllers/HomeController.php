@@ -13,9 +13,16 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::all(); 
-        $articles = Article::with('category')->get();
+        $articles = Article::with('category')->paginate(10);
 
         return view('layout.app', compact('categories', 'articles'));
+    }
+    public function contact()
+    {
+        $categories = Category::all(); 
+        $articles = Article::with('category')->paginate(10);
+
+        return view('contact', compact('categories', 'articles'));
     }
 
 }

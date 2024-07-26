@@ -10,3 +10,5 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/posts/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/posts/{category:slug}/{article:slug}', [ArticleController::class, 'show'])->name('article.show');
+
+Route::get('/contact', [HomeController::class, 'contact']);

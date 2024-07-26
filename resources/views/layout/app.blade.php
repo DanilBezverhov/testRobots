@@ -18,6 +18,7 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
   </head>
   <body>
     
@@ -68,8 +69,9 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="category.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown05">
+                        
                         @foreach($categories as $category)
-                            <a class="dropdown-item" href="{{ url('/posts/' . $category->slug) }}"> </a>
+                        <a class="dropdown-item" href="{{ url('/posts/' . $category->slug) }}">{{ $category->name }}</a>
                         @endforeach
                 </div>
                 
@@ -79,7 +81,7 @@
                 <a class="nav-link" href="about.html">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
+                <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
               </li>
             </ul>
             
@@ -176,19 +178,12 @@
               
             </div>
 
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <nav aria-label="Page navigation" class="text-center">
-                  <ul class="pagination">
-                    <li class="page-item  active"><a class="page-link" href="#">Prev</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                  </ul>
-                </nav>
-              </div>
+            <div class="pagination-wrapper">
+              {{ $articles->links('vendor.pagination.custom') }} <br>
+
+            
             </div>
+
 
           </div>
 
